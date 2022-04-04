@@ -120,7 +120,12 @@ struct Home: View {
                         
                         NavigationLink(destination: Investment(), label: {
                             Text("Investments")
-                                .padding(.top, 50)
+                                .font(.system(size: 25))
+                                .foregroundColor(.black)
+                                .frame(width: (UIScreen.main.bounds.height - 50), height: 50)
+                                .cornerRadius(10)
+                                .background(Color.green) .padding(.vertical, 5)
+                                
                         })
                         
                     }
@@ -256,7 +261,38 @@ struct Purchase: View{
 
 struct Portfolio: View{
     var body: some View{
-        Text("Portf")
+        VStack{
+            Text("Value")
+                .foregroundColor(.black)
+                .fontWeight(.bold)
+                .font(.system(size: 40))
+            ZStack{
+                Circle()
+                                .fill(Color.gray.opacity(0.1))
+                                .frame(width: 250, height: 250, alignment: .center)
+                                
+                Text("$ 22032.12")
+                    .foregroundColor(.black)
+                    .fontWeight(.regular)
+                    .font(.system(size: 44))
+            }
+            Spacer()
+            Searchbar()
+                .padding(.bottom, 150)
+            
+        }
+    }
+}
+
+struct Searchbar: View{
+    @State var text: String = ""
+    var body: some View{
+        TextField("Enter Stock or Mutual Fund", text: $text)
+            .foregroundColor(.black)
+            .padding()
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(10)
+            .frame(width: (UIScreen.main.bounds.width - 50), height: 25)
     }
 }
 
